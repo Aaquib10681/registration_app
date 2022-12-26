@@ -1,0 +1,15 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Player Page{% endblock %}
+
+
+{% block content %}
+
+{% for p in player %}
+    <h2>{{p.id}} - {{p.name}}</h2>
+
+    <br><br>
+{% endfor %}
+
+{% endblock content %}

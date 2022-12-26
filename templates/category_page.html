@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Category Page{% endblock %}
+
+
+{% block content %}
+
+{% for category in categories %}
+    <h2>{{category.id}} - {{category.name}}</h2>
+    <h2>{{category.info}}</h2>
+    <br><br>
+{% endfor %}
+
+{% endblock content %}
