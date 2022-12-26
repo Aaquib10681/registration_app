@@ -50,6 +50,10 @@ class CreatePlayerView(View):
         except:
             return redirect(reverse('fail_response'))
 
+    def get(self, request, *args, **kwargs):
+            template_name = 'registration_page.html'
+            return render(request, template_name)
+
 
 class SuccessResponseView(View):
     """ This is Success page view """
