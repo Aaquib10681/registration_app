@@ -4,5 +4,150 @@
 
 
 {% block content %}
-<h2>players will register here...</h2>
-{% endblock %}
+
+<div class="">
+
+
+
+  <form action="{% url 'create_player_object' id=category_id %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" id="custId" name="cat_id" value="{{category_id}}">
+    <!-- Name -->
+    <div class="relative z-0 mb-6 w-full group">
+      <input type="text" name="name" id="floating_first_name"
+        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        placeholder=" " required />
+      <label for="floating_first_name"
+        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+        Name</label>
+    </div>
+
+    <!-- Parantage -->
+    <div class="relative z-0 mb-6 w-full group">
+      <input type="text" name="parentage" id="floating_first_name"
+        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        placeholder=" " required />
+      <label for="floating_first_name"
+        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+        Parantage</label>
+    </div>
+
+    <!-- address -->
+    <div class="relative z-0 mb-6 w-full group">
+      <input type="text" name="address" id="floating_first_name"
+        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        placeholder=" " required />
+      <label for="floating_first_name"
+        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+        Address</label>
+    </div>
+    <!-- phone number -->
+    <div class="relative z-0 mb-6 w-full group">
+      <input type="text" name="mobile_num" id="floating_first_name"
+        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        placeholder=" " required />
+      <label for="floating_first_name"
+        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+        Phone Number</label>
+    </div>
+    <!-- email address -->
+    <div class="relative z-0 mb-6 w-full group">
+      <input type="email" name="email_address" id="floating_email"
+        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        placeholder=" " required />
+      <label for="floating_email"
+        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email
+        email address</label>
+    </div>
+    <!-- dob -->
+    <div class="relative z-0 mb-6 w-full group">
+      <input type="text" name="dob" id="floating_first_name"
+        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        placeholder="YYYY-MM-DD" required />
+      <label for="floating_first_name"
+        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+        dob (calander here)</label>
+    </div>
+    <!-- age -->
+    <div class="relative z-0 mb-6 w-full group">
+      <input type="text" name="age" id="floating_first_name"
+        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        placeholder=" " required />
+      <label for="floating_first_name"
+        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+        age</label>
+    </div>
+    <!-- qualification -->
+    <div class="relative z-0 mb-6 w-full group">
+      <input type="text" name="qualification" id="floating_first_name"
+        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        placeholder=" " required />
+      <label for="floating_first_name"
+        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+        Qualification</label>
+    </div>
+
+
+    <button type="submit"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+  </form>
+
+  {% endblock %}
+
+
+
+
+
+  {# comment
+
+  <form class="w-full max-w-lg">
+    <!-- Name field -->
+    <label for="fname"> Name : </label>
+    <input class="w-3/6 rounded text-left md:text-center" id="fname" name="fname" placeholder="Full Name" /><br /><br />
+
+    <!-- Parentage-->
+    <label for="sname"> Parentage: </label>
+    <input class=" w-3/6 rounded text-left md:text-center" id="sname" name="sname" placeholder=" Son Of" /><br /><br />
+
+    <!-- Address-->
+    <label for="aDDress"> Address: </label>
+    <input class="w-3/6 rounded text-left md:text-center" id="aDDress" name="aDDress" placeholder=" Residence" />
+    <br /><br />
+
+    <!-- Phone Number-->
+    <label for="p-no"> Phone Number: </label>
+    <input class=" w-3/6 rounded text-left md:text-center" id="p-no" name="p-no"
+      placeholder=" 1234567890" /><br /><br />
+
+    <!-- Email Address -->
+    <label for="e-mail"> Email Address: </label>
+    <input class="w-3/3 rounded text-left md:text-center" id="e-mail" name="e-mail"
+      placeholder="abc@gmail.com" /><br /><br />
+
+
+    <!-- DOB-->
+    <label for="dob"> DOB: </label>
+    <input class=" w-3/12rounded  datepicker relative form-floating  text-left md:text-center" id="dob" name="dob"
+      placeholder="DD-MM-YYYY" />
+    <br /><br />
+
+    <!--Age-->
+    <label for="age"> Age: </label>
+    <input class=" w-3/12 rounded  text-left md:text-center" id="age" name="age" placeholder=" Age"><br /><br />
+
+    <!--Qualification -->
+    <label for="qual"> Qualification: </label>
+    <input class=" w-3/6 rounded text-left md:text-center" name="qual" id=" qual" placeholder=" Degree">
+    <br /><br />
+
+    <button type="button" class="w-3/9 bg-black-500 hover:bg-black-700 text-white font-bold py-2 px-4 "> Submit
+    </button>
+
+  </form>
+</div>
+
+<br /><br />
+
+
+
+#}

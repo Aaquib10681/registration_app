@@ -18,23 +18,29 @@
 
 </head>
 
-<body class="h-screen bg-gradient-to-b from-pink-200 to-purple-500">
+<!-- <body class="h-screen bg-gradient-to-b from-pink-200 to-purple-500"> -->
+
+<body>
   <!-- nav bar -->
   <nav class="flex items-center justify-between flex-wrap bg-teal-500 ">
 
     <div class="flex items-center flex-shrink-0 text-white ml-6">
-      <span class="font-semibold text-xl tracking-tight">Registration</span>
+
+      <a class="font-semibold text-xl tracking-tight px-6 py-2.5 text-blue-600"
+        href="{% url 'category_list' %}">Registration</a>
+
+
     </div>
 
     <div class="flex items-center flex-shrink-0 text-white mr-6">
-      <span class="font-semibold text-xl tracking-tight">Show</span>
+      <a class="font-semibold text-xl tracking-tight px-6 py-2.5 text-green-600" href="{% url 'player_list' %}">Show</a>
     </div>
     </div>
   </nav>
 
   <!-- This is a base template which will be common for our all html files -->
 
-  <div class="m-10">
+  <div class="m-10 flex items-center justify-center">
     {% block content %}
     {% endblock content %}
   </div>

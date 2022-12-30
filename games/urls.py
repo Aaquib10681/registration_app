@@ -11,7 +11,7 @@ urlpatterns = [
     path('player/', ListPlayerInfo.as_view(), name='player_list'),
 
     # creating player instances
-    path('player/<int:id>/', CreatePlayerView.as_view(),
+    path('category/<int:id>/', CreatePlayerView.as_view(),
          name='create_player_object'),
 
     path('player/reg/success/', SuccessResponseView.as_view(),
