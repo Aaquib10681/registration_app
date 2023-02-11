@@ -23,7 +23,7 @@ class CreatePlayerView(View):
     def post(self, request, *args, **kwargs):
         req_obj = request.POST
         category_id = self.kwargs.get('id')
-        print('post field id === ', category_id)
+       
         category_obj = Category.objects.filter(id=category_id).first()
         name = req_obj.get('name')
         parentage = req_obj.get('parentage')
@@ -33,8 +33,7 @@ class CreatePlayerView(View):
         dob = req_obj.get('dob')
         age = req_obj.get('age')
         qualification = req_obj.get('qualification')
-
-        print("name", name, "parentage", parentage, "address", address, "mobile_num", mobile_num, "email_address", email_address, "dob", dob, "age", age, "qualification", qualification) 
+ 
         try:
             PlayerInformation.objects.create(category=category_obj, name=name,
                 parentage=parentage, address=address, mobile_num=mobile_num,
