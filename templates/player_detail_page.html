@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Player Detail Page{% endblock %}
+
+
+{% block content %}
+
+<p>name : <b>{{player.name}}</b></p>
+<br />
+<p>parentage : <b>{{player.parentage}}</b></p>
+<br />
+<p>address : <b>{{player.address}}</b></p>
+<br />
+<p>mobile_num : <b>{{player.mobile_num}}</b></p>
+<br />
+<p>email_address : <b>{{player.email_address}}</b></p>
+<br />
+<p>dob : <b>{{player.dob}}</b></p>
+<br />
+<p>age : <b>{{player.age}}</b></p>
+<br />
+<p>qualification : <b>{{player.qualification}}</b></p>
+<br />
+{% endblock content %}

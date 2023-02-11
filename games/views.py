@@ -4,6 +4,8 @@ from django.views.generic import View
 from games.models import Category, PlayerInformation
 
 
+# register
+
 class ListCategory(View):
     """ This endpoint lists all the categories in our system """
 
@@ -12,17 +14,6 @@ class ListCategory(View):
 
         category_objects = Category.objects.all()
         obj = {'categories': category_objects}
-        return render(request, template_name, context=obj)
-
-
-class ListPlayerInfo(View):
-    """ This endpoint will return player objects of our PlayerInformation class """
-
-    def get(self, request, *args, **kwargs):
-        template_name = "player_info_page.html"
-
-        player_obj = PlayerInformation.objects.all()
-        obj = {'player': player_obj}
         return render(request, template_name, context=obj)
 
 
@@ -73,3 +64,42 @@ class FailResponseView(View):
     def get(self, request, *args, **kwargs):
         template_name = 'fail_page.html'
         return render(request, template_name)
+
+
+# show
+
+class ListRegisteredCategory(View):
+    """ This endpoint lists all the registered details in our system """
+
+    def get(self, request, *args, **kwargs):
+        template_name = "registered_category.html"
+
+        category_objects = Category.objects.all()
+        obj = {'categories': category_objects}
+        return render(request, template_name, context=obj)
+
+class ShowCategoryPlayers(View):
+    """ This endpoint will return player objects  linked to Category """
+
+    def get(self, request, *args, **kwargs):
+        template_name = "show_category_players.html"
+        category_id = self.kwargs.get('id')
+
+        category_obj = Category.objects.filter(id=category_id).first()
+        if category_obj:
+            player_obj = PlayerInformation.objects.filter(category=category_obj)
+            obj = {'player': player_obj}
+            return render(request, template_name, context=obj)
+
+
+class ShowPlayerDetails(View):
+    """ This endpoint will return player objects  linked to Category """
+
+    def get(self, request, *args, **kwargs):
+        template_name = "player_detail_page.html"
+        player_id = self.kwargs.get('id')
+        player_obj = PlayerInformation.objects.filter(id=player_id).first()   
+        obj = {'player': player_obj}
+        return render(request, template_name, context=obj)
+
+
