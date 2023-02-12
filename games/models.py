@@ -28,7 +28,7 @@ class PlayerInformation(models.Model):
     email_address = models.CharField(max_length=128, null=True, blank=True)
     
     dob = models.DateField(max_length=8)
-    age = models.CharField(max_length=8, null=True, blank=True)
+    age = models.CharField(max_length=20, null=True, blank=True)
     qualification = models.CharField(max_length=64, null=True, blank=True)
     
     created_at = models.DateTimeField(auto_now_add=True)

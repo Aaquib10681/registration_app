@@ -42,6 +42,15 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'registration.urls'
 
 BASE_TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
+# Directory for your static files
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# URL for serving your static files
+STATIC_URL = '/static/'
+
+# Directories for your static files to be collected from
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
 TEMPLATES = [
     {
