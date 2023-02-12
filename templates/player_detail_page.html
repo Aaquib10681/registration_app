@@ -4,21 +4,23 @@
 
 
 {% block content %}
+<div class="  flex flex-col flex-1  basis-1/2 ">
 
-<p>name : <b>{{player.name}}</b></p>
-<br />
-<p>parentage : <b>{{player.parentage}}</b></p>
-<br />
-<p>address : <b>{{player.address}}</b></p>
-<br />
-<p>mobile_num : <b>{{player.mobile_num}}</b></p>
-<br />
-<p>email_address : <b>{{player.email_address}}</b></p>
-<br />
-<p>dob : <b>{{player.dob}}</b></p>
-<br />
-<p>age : <b>{{player.age}}</b></p>
-<br />
-<p>qualification : <b>{{player.qualification}}</b></p>
-<br />
+  <p>Name : <b class="bg-green-200">{{player.name}}</b></p>
+  <br />
+  <p>Parentage : <b>{{player.parentage}}</b></p>
+  <br />
+  <p>Address : <b>{{player.address}}</b></p>
+  <br />
+  <p>Mobile_num : <b>{{player.mobile_num}}</b></p>
+  <br />
+  <p>Email_address : <b>{{player.email_address}}</b></p>
+  <br />
+  <p>Dob : <b class="bg-yellow-200">{{player.dob}}</b></p>
+  <br />
+  <p>Age : <b>{{player.age}}</b></p>
+  <br />
+  <p>Qualification : <b>{{player.qualification}}</b></p>
+  <br />
+</div>
 {% endblock content %}

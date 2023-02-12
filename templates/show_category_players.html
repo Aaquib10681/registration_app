@@ -4,12 +4,17 @@
 
 
 {% block content %}
-<div class="flex flex-col bg-gray-200 m-2">
+<div class="flex flex-col-nowrap">
 
-    {% for p in player %}
-    <h2 class="text-black-700 text-center bg-gray-300 px-4 py-2 m-2"></h2>
-    <a href="{% url 'show_player_details' id=p.id %}">{{p.name}} ({{p.category.name}}) </a>
-    {% endfor %}
+    <ul class="list-decimal">
+        {% for p in player %}
+        <li class="m-2 p-2 rounded-lg shadow-lg bg-white-200 ring-2 ring-blue-700  max-w-sm">
+            <a href="{% url 'show_player_details' id=p.id %}" title="Click to view details">
+                {{p.name}} ({{p.category.name}})
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
 
 </div>
 {% endblock content %}
