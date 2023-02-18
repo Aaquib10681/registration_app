@@ -23,7 +23,7 @@ class CreatePlayerView(View):
     def post(self, request, *args, **kwargs):
         req_obj = request.POST
         category_id = self.kwargs.get('id')
-       
+
         category_obj = Category.objects.filter(id=category_id).first()
         name = req_obj.get('name')
         parentage = req_obj.get('parentage')
@@ -33,11 +33,11 @@ class CreatePlayerView(View):
         dob = req_obj.get('dob')
         age = req_obj.get('age')
         qualification = req_obj.get('qualification')
- 
+
         try:
             PlayerInformation.objects.create(category=category_obj, name=name,
-                parentage=parentage, address=address, mobile_num=mobile_num,
-                email_address=email_address, dob=dob, age=age, qualification=qualification)
+                                             parentage=parentage, address=address, mobile_num=mobile_num,
+                                             email_address=email_address, dob=dob, age=age, qualification=qualification)
 
             return redirect(reverse('success_response'))
         except Exception as e:
@@ -45,14 +45,15 @@ class CreatePlayerView(View):
             return redirect(reverse('fail_response'))
 
     def get(self, request, *args, **kwargs):
-            category_id = self.kwargs.get('id')
-            template_name = 'registration_page.html'
-            context = {'category_id': category_id}
-            return render(request, template_name, context=context)
+        category_id = self.kwargs.get('id')
+        template_name = 'registration_page.html'
+        context = {'category_id': category_id}
+        return render(request, template_name, context=context)
 
 
 class SuccessResponseView(View):
     """ This is Success page view """
+
     def get(self, request, *args, **kwargs):
         template_name = 'success_page.html'
         return render(request, template_name)
@@ -60,6 +61,7 @@ class SuccessResponseView(View):
 
 class FailResponseView(View):
     """ This is Fail page view """
+
     def get(self, request, *args, **kwargs):
         template_name = 'fail_page.html'
         return render(request, template_name)
@@ -77,6 +79,7 @@ class ListRegisteredCategory(View):
         obj = {'categories': category_objects}
         return render(request, template_name, context=obj)
 
+
 class ShowCategoryPlayers(View):
     """ This endpoint will return player objects  linked to Category """
 
@@ -86,7 +89,8 @@ class ShowCategoryPlayers(View):
 
         category_obj = Category.objects.filter(id=category_id).first()
         if category_obj:
-            player_obj = PlayerInformation.objects.filter(category=category_obj)
+            player_obj = PlayerInformation.objects.filter(
+                category=category_obj)
             obj = {'player': player_obj}
             return render(request, template_name, context=obj)
 
@@ -97,8 +101,24 @@ class ShowPlayerDetails(View):
     def get(self, request, *args, **kwargs):
         template_name = "player_detail_page.html"
         player_id = self.kwargs.get('id')
-        player_obj = PlayerInformation.objects.filter(id=player_id).first()   
+        player_obj = PlayerInformation.objects.filter(id=player_id).first()
         obj = {'player': player_obj}
         return render(request, template_name, context=obj)
 
 
+class DeletePlayerObject(View):
+    def post(self, request, *args, **kwargs):
+        player_id = request.POST.get('player_id')
+        # db_query
+        player_obj = PlayerInformation.objects.filter(id=player_id).first()
+        if player_obj:
+            player_obj.delete()
+            message_title = 'Success'
+            message_body = 'Player Deleted Successfully'
+        else:
+            message_title = 'Error'
+            message_body = 'Player Deleted Successfully'
+
+        context = {'message_title': message_title,
+                   'message_body': message_body}
+        return render(request, "delete_confirmation.html", context=context)

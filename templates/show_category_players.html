@@ -87,8 +87,10 @@
                 </svg>
                 <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete?
                 </h3>
-                <button data-modal-hide="popup-modal" type="button" onclick="delete_function()"
-                    class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                <button id='delete_button' data-modal-hide="popup-modal" type="button" onclick="delete_function()"
+                    class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none 
+                    focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex 
+                    items-center px-5 py-2.5 text-center mr-2">
                     Yes, I'm sure
                 </button>
                 <button data-modal-hide="popup-modal" type="button" onclick="cancel_function()"
@@ -98,6 +100,11 @@
         </div>
     </div>
 </div>
+
+<form id="delete_form" method="POST" action="{% url 'delete_player' %}">
+    {% csrf_token %}
+    <input id='delete_input' type="hidden" name="player_id" value="DELETE">
+</form>
 
 <script>
     var global_id = 0;
@@ -112,7 +119,21 @@
     }
     function delete_function() {
         console.log('delete clicked');
-        console.log('global id==', global_id);
+        console.log('global id==', global_id)
+
+        var delete_obj = document.getElementById('delete_button');
+
+        event.preventDefault(); // prevent default form submission behavior
+        const form = document.getElementById('delete_form');
+        //var delete_input = document.getElementById('delete_input');
+        var delete_input = $('#delete_input');
+        console.log('--delete_input=== ' + delete_input.val());
+        delete_input.val(global_id);
+        console.log('--delete_input=== ' + delete_input.val());
+
+        form.submit();
+
+        //var delete_value = delete_input.val();
     }
 
 

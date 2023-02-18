@@ -10,6 +10,8 @@ from games.views import FailResponseView
 from games.views import ListRegisteredCategory
 from games.views import ShowCategoryPlayers
 from games.views import ShowPlayerDetails
+from games.views import DeletePlayerObject
+
 
 urlpatterns = [
     # listing category info
@@ -25,13 +27,19 @@ urlpatterns = [
     path('player/reg/fail/', FailResponseView.as_view(), name='fail_response'),
 
 
-     # showing Registered Details
-    path('registered/category/', ListRegisteredCategory.as_view(), name='registered_category'),
+    # showing Registered Details
+    path('registered/category/', ListRegisteredCategory.as_view(),
+         name='registered_category'),
 
-    path('registered/players/<int:id>/', ShowCategoryPlayers.as_view(), name='show_category_players'),
+    path('registered/players/<int:id>/',
+         ShowCategoryPlayers.as_view(), name='show_category_players'),
 
-#     lisiting player detail info
-    path('registered/player/detail/<int:id>/', ShowPlayerDetails.as_view(), name='show_player_details'),
+    #     lisiting player detail info
+    path('registered/player/detail/<int:id>/',
+         ShowPlayerDetails.as_view(), name='show_player_details'),
 
+    # end point delete functionlity
+    path('delete/player/',
+         DeletePlayerObject.as_view(), name='delete_player'),
 
 ]
