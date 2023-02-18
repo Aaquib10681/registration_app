@@ -84,6 +84,9 @@ class ShowCategoryPlayers(View):
     """ This endpoint will return player objects  linked to Category """
 
     def get(self, request, *args, **kwargs):
+        player_object = False
+        message = 'initial'
+
         template_name = "show_category_players.html"
         category_id = self.kwargs.get('id')
 
@@ -91,7 +94,10 @@ class ShowCategoryPlayers(View):
         if category_obj:
             player_obj = PlayerInformation.objects.filter(
                 category=category_obj)
-            obj = {'player': player_obj}
+            if not player_obj:
+                player_object = True
+                message = 'No player has Registered for this Category'
+            obj = {'player': player_obj, "player_object":player_object, "message":message}
             return render(request, template_name, context=obj)
 
 

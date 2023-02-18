@@ -5,7 +5,9 @@
 
 {% block content %}
 <div class="flex flex-col-nowrap">
-
+    {% if player_object %}
+    <h3>{{message}}</h3>
+    {% else %}
     <ul class="list-decimal">
         {% for p in player %}
         <li class="m-2 p-2 rounded-lg shadow-lg bg-white-200 ring-2 ring-blue-700  max-w-sm">
@@ -15,14 +17,15 @@
             <!-- Modal toggle -->
             <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" onclick="buttonClicked({{p.id}})"
                 class="block text-white 
-            bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none 
-            focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 
-            dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
+                bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none 
+                focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 
+                dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
                 Delete
             </button>
         </li>
         {% endfor %}
     </ul>
+    {% endif %}
 </div>
 
 <!-- javascript ___.
